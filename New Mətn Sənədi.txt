@@ -1,0 +1,102 @@
+using System;
+
+namespace AbstractionHomeWork
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Kod yarimciq yazmisam bilirem, en azindan azda olsa nese yazim dedim 
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            User user = new User()
+            {
+               FullName="MirsalehAgyev",
+                Email= "mirsalehaa@code.edu.az",
+                
+            };
+
+
+
+        }
+    }
+
+
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AbstractionHomeWork
+{
+    internal interface IAccount
+    {
+        abstract bool PasswordChecker(string password);
+
+        
+    }
+
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AbstractionHomeWork
+{
+  public class User : IAccount
+    {
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+
+        
+        public User()
+        {
+             
+            Console.WriteLine("Email daxil edin: "); 
+            string email = Console.ReadLine();
+            do
+            {
+               
+                Console.WriteLine("Sifreni daxil edin: ");
+                string password = Console.ReadLine();
+                Console.WriteLine(PasswordChecker(password));
+
+            } while (!PasswordChecker(Password));
+
+
+
+        }
+        public bool PasswordChecker(string password)
+        {
+            foreach (var item in password)
+            {
+                if (password.Length > 7)
+                {
+                    return true;
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+            return false;
+        }
+    }
+}
